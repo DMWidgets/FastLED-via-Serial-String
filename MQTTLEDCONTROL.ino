@@ -117,6 +117,11 @@ void loop() {
   // connection and automatically reconnect when disconnected).  See the MQTT_connect
   // function definition further below.
   MQTT_connect();
+  
+  //Keeps wifi connection alive (seemed to have a problem with losing connection after a long enough period)
+  if (WiFi.status() != WL_CONNECTED){
+    WiFi.begin(WLAN_SSID, WLAN_PASS);
+    delay(10000);
 
   // this is our 'wait for incoming subscription packets' busy subloop
   // try to spend your time here
